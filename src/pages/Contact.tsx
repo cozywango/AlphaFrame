@@ -223,25 +223,18 @@ const Contact = () => {
 
         {/* Office Hours & Additional Info */}
         <AnimatedSection delay={0.4}>
-          <div className="mt-32 grid md:grid-cols-3 gap-8">
-            <div className="text-center bg-card p-8 rounded-2xl border border-border">
+          <div className="mt-32 grid md:grid-cols-2 gap-8 justify-items-center">
+            <div className="text-center bg-card p-8 rounded-2xl border border-border max-w-md w-full">
               <h3 className="text-xl font-bold mb-4">Marketers</h3>
               <p className="text-muted-foreground">
                 Apply for our "Hunter" program. Commission only, high-ticket payouts.
               </p>
             </div>
             
-            <div className="text-center bg-card p-8 rounded-2xl border border-border">
+            <div className="text-center bg-card p-8 rounded-2xl border border-border max-w-md w-full">
               <h3 className="text-xl font-bold mb-4">Founders</h3>
               <p className="text-muted-foreground">
                 Seeking a visual partner? Let's discuss your next funding round.
-              </p>
-            </div>
-            
-            <div className="text-center bg-card p-8 rounded-2xl border border-border">
-              <h3 className="text-xl font-bold mb-4">The Stack</h3>
-              <p className="text-muted-foreground">
-                Powered by Gemini Advanced & Apple Silicon.
               </p>
             </div>
           </div>

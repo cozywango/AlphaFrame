@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,13 +28,15 @@ export const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium"
-              >
-                {item.label}
-              </Link>
+              <div key={item.href} className="relative inline-block">
+                <GlowingEffect disabled={false} glow className="pointer-events-none rounded-md" />
+                <Link
+                  to={item.href}
+                  className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative z-10 px-1"
+                >
+                  {item.label}
+                </Link>
+              </div>
             ))}
             <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               Audit Brand
@@ -59,14 +62,16 @@ export const Navigation = () => {
           >
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
+                <div key={item.href} className="relative">
+                  <GlowingEffect disabled={false} glow className="pointer-events-none rounded-md" />
+                  <Link
+                    to={item.href}
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-300 font-medium relative z-10"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </div>
               ))}
               <Button variant="outline" size="sm" className="w-fit border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                 Audit Brand
