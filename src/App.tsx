@@ -16,6 +16,7 @@ import Decks from "./pages/services/Decks";
 import Ghost from "./pages/services/Ghost";
 import Retainer from "./pages/services/Retainer";
 import ForCreators from './pages/ForCreators';
+import AuditPortfolio from './app/audit-portfolio/page';
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
               <Route path="/for-creators" element={<ForCreators />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/protocol" element={<Protocol />} />
+              <Route path="/audit-portfolio" element={<AuditPortfolio />} />
 
               {/* services routes */}
               <Route path="/services/audit" element={<Audit />} />

@@ -8,7 +8,9 @@ const ForCreators = () => {
       <div className="container mx-auto px-6">
         <AnimatedSection>
           <div className="text-center mb-12">
-            <h1 className="text-hero mb-4">Don’t Just Post. Publish.</h1>
+            <h1 className="text-hero mb-4">
+              Don’t Just Post. <span className="text-primary">Publish.</span>
+            </h1>
             <p className="text-subtitle max-w-3xl mx-auto">
               We bring Deep-Tech precision to personal branding. High-performance, "Catalog-Mode" websites for creators and businesses who demand Visual Authority.
             </p>
@@ -41,31 +43,34 @@ const ForCreators = () => {
             <p className="text-muted-foreground mb-4">If you are a personality, influencer, or artist monetizing your personal brand, the Creator Series is engineered to turn your audience into a community.</p>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="p-6 bg-background/10 rounded-lg border border-border">
-                <h4 className="font-bold mb-2">Tier 1: The Bio-Link — $150 (One-Time)</h4>
-                <p className="text-muted-foreground">Single Long-Scroll Page • Bio & Social Links • 1 Featured Image/Video • Contact Button</p>
+                <h4 className="font-bold mb-2">Tier 1 — Bio‑Link ($80‑150)</h4>
+                <p className="text-muted-foreground">Single long-scroll page • Bio & social links • 1 featured image/video • Contact button • No hosting included</p>
                 <div className="mt-4">
-                  <Link to="/contact"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
                 </div>
               </div>
+
               <div className="p-6 bg-background/10 rounded-lg border border-border">
-                <h4 className="font-bold mb-2">Tier 2: The Portfolio — $300 (One-Time)</h4>
-                <p className="text-muted-foreground">Home + About + Work • 10-Item Gallery Grid • Downloadable CV/Kit • Mobile Optimized</p>
+                <h4 className="font-bold mb-2">Tier 2 — Portfolio ($170‑270)</h4>
+                <p className="text-muted-foreground">Home + About + Work pages • 10-item gallery grid • Downloadable CV/kit • Mobile optimized • No hosting included</p>
                 <div className="mt-4">
-                  <Link to="/contact"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
                 </div>
               </div>
+
               <div className="p-6 bg-background/10 rounded-lg border border-border">
-                <h4 className="font-bold mb-2">Tier 3: The Content Hub — $550 (One-Time)</h4>
-                <p className="text-muted-foreground">Home + Blog/Newsletter • Dynamic Content Feed • Email Capture Form</p>
+                <h4 className="font-bold mb-2">Tier 3 — Content Hub ($290‑390)</h4>
+                <p className="text-muted-foreground">Home + Blog/Newsletter pages • Dynamic content feed • Email capture form • Hosting included • Mobile & desktop optimization</p>
                 <div className="mt-4">
-                  <Link to="/contact"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
                 </div>
               </div>
+
               <div className="p-6 bg-background/10 rounded-lg border border-border">
-                <h4 className="font-bold mb-2">Tier 4: The Icon — $850 (One-Time)</h4>
-                <p className="text-muted-foreground">Full Personal Site (5 Pages) • Motion Effects (Parallax) • Press/Media Kit Section • Custom Domain Setup</p>
+                <h4 className="font-bold mb-2">Tier 4 — Icon ($400+)</h4>
+                <p className="text-muted-foreground">Full personal site (5 pages) • Motion effects (parallax) • Press/media kit section • Custom domain setup • Hosting included • Mobile & desktop optimization</p>
                 <div className="mt-4">
-                  <Link to="/contact"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
                 </div>
               </div>
             </div>
@@ -74,31 +79,34 @@ const ForCreators = () => {
             <p className="text-muted-foreground mb-4">If you are an entity, agency, or retailer selling products or services, the Business Series is architected to turn your traffic into customers.</p>
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div className="p-6 bg-background/10 rounded-lg border border-border">
-                <h4 className="font-bold mb-2">Tier 1: The Card — $250 (One-Time)</h4>
-                <p className="text-muted-foreground">Single Landing Page • Business Info & Map • "WhatsApp Us" Button • Hero Image</p>
+                <h4 className="font-bold mb-2">Tier 1 — The Card ($120‑220)</h4>
+                <p className="text-muted-foreground">Single landing page • Business info & map • “WhatsApp Us” button • Hero image • No hosting included</p>
                 <div className="mt-4">
-                  <Link to="/contact"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
                 </div>
               </div>
+
               <div className="p-6 bg-background/10 rounded-lg border border-border">
-                <h4 className="font-bold mb-2">Tier 2: The Catalog — $500 (One-Time)</h4>
-                <p className="text-muted-foreground">Product Gallery (Up to 20) • Categorized Layouts • Product Detail Pop-ups • Direct-to-DM Buttons</p>
+                <h4 className="font-bold mb-2">Tier 2 — The Catalog ($250‑350)</h4>
+                <p className="text-muted-foreground">Product gallery (up to 20 items) • Categorized layouts • Product detail pop-ups • Direct-to-DM buttons • No hosting included</p>
                 <div className="mt-4">
-                  <Link to="/contact"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
                 </div>
               </div>
+
               <div className="p-6 bg-background/10 rounded-lg border border-border">
-                <h4 className="font-bold mb-2">Tier 3: The Firm — $800 (One-Time)</h4>
-                <p className="text-muted-foreground">Service Menu / Price List • Team Bios Section • Client Testimonials • Booking Link Integration</p>
+                <h4 className="font-bold mb-2">Tier 3 — The Firm ($380‑480)</h4>
+                <p className="text-muted-foreground">Service menu / price list • Team bios section • Client testimonials • Booking link integration • Hosting included • Mobile & desktop optimization</p>
                 <div className="mt-4">
-                  <Link to="/contact"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
                 </div>
               </div>
+
               <div className="p-6 bg-background/10 rounded-lg border border-border">
-                <h4 className="font-bold mb-2">Tier 4: The Enterprise Lite — $1,200 (One-Time)</h4>
-                <p className="text-muted-foreground">Multi-Page Architecture • High-End Motion Graphics • Case Studies Section • Competitor Analysis Audit</p>
+                <h4 className="font-bold mb-2">Tier 4 — Enterprise Lite ($800+)</h4>
+                <p className="text-muted-foreground">Multi-page architecture • High-end motion graphics • Case studies section • Competitor analysis audit • Hosting included • Mobile & desktop optimization</p>
                 <div className="mt-4">
-                  <Link to="/contact"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
                 </div>
               </div>
             </div>
@@ -116,6 +124,7 @@ const ForCreators = () => {
               <p className="mb-3"><strong>Can I process credit card payments?</strong><br/>No. We build the frontend experience. For payments, we link your buttons to Stripe Links, PayPal, or your WhatsApp Business. We keep your site lightweight and hack-proof by removing the database risk.</p>
               <p className="mb-3"><strong>What is the hosting cost?</strong><br/>We build on modern, low-cost infrastructure (e.g., Framer/Webflow/Vercel). Hosting usually costs you between $0 - $20/month depending on the platform you choose. We advise; you pay the provider directly.</p>
               <p className="mb-3"><strong>Why AlphaFrame?</strong><br/>Because we usually design for Quantum Computing and Biotech firms. We bring that same level of discipline, cleanliness, and speed to your business.</p>
+              <p className="mb-3"><strong>Can you register a custom domain for me?</strong><br/>Yes — we can assist with domain registration and setup (example TLDs: .com, .net, .io, .co). Domain costs vary by availability and extension; expect roughly $20–$100 depending on the name and TLD. If you’ve purchased Tier 1 or Tier 2 we can discuss including the domain fee as part of onboarding, though domain registration can be arranged for any package and is not exclusive to those tiers.</p>
             </div>
 
             <div className="text-center">

@@ -140,7 +140,9 @@ const Protocol = () => {
                 <Link to="/contact">
                   <GradientButton className="min-w-[180px]">Initiate Protocol</GradientButton>
                 </Link>
-                <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground py-2">See Case Studies</Button>
+                <Link to="/audit-portfolio">
+                  <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground py-2">See Case Studies</Button>
+                </Link>
                </div>
             </div>
           </AnimatedSection>

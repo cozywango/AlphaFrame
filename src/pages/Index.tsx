@@ -104,7 +104,7 @@ const Index = () => {
 							    </GradientButton>
 							  </Link>
 							</div>
-							<Link to="/contact">
+							<Link to="/audit-portfolio">
 								<Button
 									variant="outline"
 									size="lg"

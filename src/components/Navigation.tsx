@@ -64,7 +64,9 @@ export const Navigation = () => {
 								</Link>
 							</div>
 						))}
-						<GradientButton className="w-fit">Audit Brand</GradientButton>
+						<Link to="/audit-portfolio">
+							<GradientButton className="w-fit">Audit Portfolio</GradientButton>
+						</Link>
 					</div>
 
 					{/* Mobile Menu Toggle */}
@@ -106,7 +108,9 @@ export const Navigation = () => {
 									</Link>
 								</div>
 							))}
-							<GradientButton className="w-fit">Audit Brand</GradientButton>
+							<Link to="/audit-portfolio">
+								<GradientButton className="w-fit">Audit Portfolio</GradientButton>
+							</Link>
 						</div>
 					</motion.div>
 				)}

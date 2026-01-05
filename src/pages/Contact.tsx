@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Twitter, Linkedin, Send } from 'lucide-react';
+import { Mail, MapPin, Twitter, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -229,19 +229,6 @@ const Contact = () => {
                     <div>
                       <h4 className="font-semibold">Instagram</h4>
                       <p className="text-muted-foreground text-sm">@alphaframeonline</p>
-                    </div>
-                  </a>
-                  
-                  <a 
-                    href="https://linkedin.com/company/alphaframe" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-4 p-4 rounded-xl bg-background border border-border hover:border-primary/50 transition-all duration-300 group"
-                  >
-                    <Linkedin className="text-primary group-hover:scale-110 transition-transform" size={24} />
-                    <div>
-                      <h4 className="font-semibold">LinkedIn</h4>
-                      <p className="text-muted-foreground text-sm">Official Agency Page</p>
                     </div>
                   </a>
                 </div>
