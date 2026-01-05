@@ -13,6 +13,7 @@ export interface Project {
   id: string;
   image: string;
   title: string;
+  link?: string;
 }
 
 const PLACEHOLDER_IMAGE = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200';
@@ -339,10 +340,26 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
                   <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">{internalIndex + 1} / {totalProjects}</p>
                 </div>
               </div>
-              <button className={cn('flex items-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-widest text-primary-foreground bg-primary hover:brightness-110 rounded-xl shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-105 active:scale-95')}>
-                <span>View Project</span>
-                <ExternalLink className="w-4 h-4" />
-              </button>
+              {currentProject?.link ? (
+                <a
+                  href={currentProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className={cn('flex items-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-widest text-primary-foreground bg-primary hover:brightness-110 rounded-xl shadow-lg shadow-primary/20 transition-all duration-300 hover:scale-105 active:scale-95')}
+                >
+                  <span>View Project</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              ) : (
+                <button
+                  className={cn('flex items-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-widest text-primary-foreground bg-primary/60 rounded-xl shadow-lg shadow-primary/10 transition-all duration-300')}
+                  disabled
+                >
+                  <span>View Project</span>
+                  <ExternalLink className="w-4 h-4" />
+                </button>
+              )}
             </div>
           </div>
         </div>
