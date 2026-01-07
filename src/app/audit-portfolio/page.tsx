@@ -40,6 +40,12 @@ const portfolioData = [
 				title: 'Tier 1 Business Website',
 				link: 'https://tierfour-agency.vercel.app/',
 			},
+			{
+				id: 'w3',
+				image: '/niatier4.png',
+				title: 'Tier 4 Creator Website',
+				link: 'https://niatier4creator.vercel.app/',
+			},
 		],
 	},
 ];

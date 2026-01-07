@@ -38,12 +38,19 @@ async function handler(req, res) {
     // We add a fallback just in case.
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
 
-    const { name, email, website, message, inquiryType } = body || {};
+    const { name, email, website, message, inquiryType, phone, socials, productName } = body || {};
 
-    if (!name || !email || !message) {
-      console.warn('Validation Failed:', { name, email, hasMessage: !!message });
-      return res.status(400).json({ error: 'Missing required fields (name, email, message).' });
+    if (!name || !email || (!message && inquiryType !== 'product_inquiry')) {
+      // Message is optional for product inquiry as requirements might be short or covered by fields
+      if (inquiryType !== 'product_inquiry') {
+        console.warn('Validation Failed:', { name, email, hasMessage: !!message });
+        return res.status(400).json({ error: 'Missing required fields (name, email, message).' });
+      }
     }
+
+    // For product inquiry, requirements are passed as "requirements" but mapped to message or handled separately 
+    // In modal we send 'requirements' via formData. Let's map it if incoming message is empty.
+    const requirements = body.requirements || message;
 
     // 5. Transporter Setup
     const transporter = nodemailer.createTransport({
@@ -55,7 +62,9 @@ async function handler(req, res) {
     });
 
     // 6. Send Mail
-    const subjectPrefix = inquiryType === 'marketer' ? '[HUNTER APPLICATION]' : '[FOUNDER INQUIRY]';
+    let subjectPrefix = '[FOUNDER INQUIRY]';
+    if (inquiryType === 'marketer') subjectPrefix = '[HUNTER APPLICATION]';
+    if (inquiryType === 'product_inquiry') subjectPrefix = `[PRODUCT INQUIRY] ${productName || 'General'}`;
 
     const mailOptions = {
       from: `"${name}" <${EMAIL_USER}>`, // Sender address
@@ -65,11 +74,14 @@ async function handler(req, res) {
       text: `
         Name: ${name}
         Email: ${email}
+        Phone: ${phone || 'Not provided'}
+        Socials: ${socials || 'Not provided'}
         Website: ${website || 'Not provided'}
-        Type: ${inquiryType === 'marketer' ? 'Hunter Application' : 'Founder Inquiry'}
+        Type: ${inquiryType === 'marketer' ? 'Hunter Application' : inquiryType === 'product_inquiry' ? 'Product Inquiry' : 'Founder Inquiry'}
+        Product: ${productName || 'N/A'}
         
-        Message:
-        ${message}
+        Message / Requirements:
+        ${requirements || message}
       `,
     };
 

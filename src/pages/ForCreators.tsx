@@ -1,10 +1,27 @@
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { Button } from '@/components/ui/button';
+import { GlowButton } from '@/components/ui/glow-button';
+import ProductInquiryModal from '@/components/ProductInquiryModal';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const ForCreators = () => {
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleApply = (productName: string) => {
+    setSelectedProduct(productName);
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="min-h-screen py-16">
+      <ProductInquiryModal
+        productName={selectedProduct}
+        isOpen={isModalOpen}
+        onOpenChange={setIsModalOpen}
+      />
+
       <div className="container mx-auto px-6">
         <AnimatedSection>
           <div className="text-center mb-12">
@@ -42,71 +59,95 @@ const ForCreators = () => {
             <h3 className="text-section mt-6 mb-4">Pricing: Creator Series</h3>
             <p className="text-muted-foreground mb-4">If you are a personality, influencer, or artist monetizing your personal brand, the Creator Series is engineered to turn your audience into a community.</p>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="p-6 bg-background/10 rounded-lg border border-border">
+              <div className="p-6 bg-background/10 rounded-lg border border-border relative overflow-hidden group hover:border-primary/30 transition-colors">
                 <h4 className="font-bold mb-2">Tier 1 — Bio‑Link ($80‑150)</h4>
-                <p className="text-muted-foreground">Single long-scroll page • Bio & social links • 1 featured image/video • Contact button • No hosting included</p>
-                <div className="mt-4">
-                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                <p className="text-muted-foreground mb-6">Single long-scroll page • Bio & social links • 1 featured image/video • Contact button • No hosting included</p>
+                <div className="flex items-center gap-4 mt-auto">
+                  <div onClick={() => handleApply('Creator Tier 1 — Bio-Link')}>
+                    <GlowButton>Apply</GlowButton>
+                  </div>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
                 </div>
               </div>
 
-              <div className="p-6 bg-background/10 rounded-lg border border-border">
+              <div className="p-6 bg-background/10 rounded-lg border border-border relative overflow-hidden group hover:border-primary/30 transition-colors">
                 <h4 className="font-bold mb-2">Tier 2 — Portfolio ($170‑270)</h4>
-                <p className="text-muted-foreground">Home + About + Work pages • 10-item gallery grid • Downloadable CV/kit • Mobile optimized • No hosting included</p>
-                <div className="mt-4">
-                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                <p className="text-muted-foreground mb-6">Home + About + Work pages • 10-item gallery grid • Downloadable CV/kit • Mobile optimized • No hosting included</p>
+                <div className="flex items-center gap-4 mt-auto">
+                  <div onClick={() => handleApply('Creator Tier 2 — Portfolio')}>
+                    <GlowButton>Apply</GlowButton>
+                  </div>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
                 </div>
               </div>
 
-              <div className="p-6 bg-background/10 rounded-lg border border-border">
+              <div className="p-6 bg-background/10 rounded-lg border border-border relative overflow-hidden group hover:border-primary/30 transition-colors">
                 <h4 className="font-bold mb-2">Tier 3 — Content Hub ($290‑390)</h4>
-                <p className="text-muted-foreground">Home + Blog/Newsletter pages • Dynamic content feed • Email capture form • Hosting included • Mobile & desktop optimization</p>
-                <div className="mt-4">
-                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                <p className="text-muted-foreground mb-6">Home + Blog/Newsletter pages • Dynamic content feed • Email capture form • Hosting included • Mobile & desktop optimization</p>
+                <div className="flex items-center gap-4 mt-auto">
+                  <div onClick={() => handleApply('Creator Tier 3 — Content Hub')}>
+                    <GlowButton>Apply</GlowButton>
+                  </div>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
                 </div>
               </div>
 
-              <div className="p-6 bg-background/10 rounded-lg border border-border">
+              <div className="p-6 bg-background/10 rounded-lg border border-border relative overflow-hidden group hover:border-primary/30 transition-colors">
                 <h4 className="font-bold mb-2">Tier 4 — Icon ($400+)</h4>
-                <p className="text-muted-foreground">Full personal site (5 pages) • Motion effects (parallax) • Press/media kit section • Custom domain setup • Hosting included • Mobile & desktop optimization</p>
-                <div className="mt-4">
-                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                <p className="text-muted-foreground mb-6">Full personal site (5 pages) • Motion effects (parallax) • Press/media kit section • Custom domain setup • Hosting included • Mobile & desktop optimization</p>
+                <div className="flex items-center gap-4 mt-auto">
+                  <div onClick={() => handleApply('Creator Tier 4 — Icon')}>
+                    <GlowButton>Apply</GlowButton>
+                  </div>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
                 </div>
               </div>
             </div>
 
-            <h3 className="text-section mt-6 mb-4">Pricing: Business Series</h3>
+            <h3 className="text-section mt-12 mb-4">Pricing: Business Series</h3>
             <p className="text-muted-foreground mb-4">If you are an entity, agency, or retailer selling products or services, the Business Series is architected to turn your traffic into customers.</p>
             <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div className="p-6 bg-background/10 rounded-lg border border-border">
+              <div className="p-6 bg-background/10 rounded-lg border border-border relative overflow-hidden group hover:border-primary/30 transition-colors">
                 <h4 className="font-bold mb-2">Tier 1 — The Card ($120‑220)</h4>
-                <p className="text-muted-foreground">Single landing page • Business info & map • “WhatsApp Us” button • Hero image • No hosting included</p>
-                <div className="mt-4">
-                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                <p className="text-muted-foreground mb-6">Single landing page • Business info & map • “WhatsApp Us” button • Hero image • No hosting included</p>
+                <div className="flex items-center gap-4 mt-auto">
+                  <div onClick={() => handleApply('Business Tier 1 — The Card')}>
+                    <GlowButton>Apply</GlowButton>
+                  </div>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
                 </div>
               </div>
 
-              <div className="p-6 bg-background/10 rounded-lg border border-border">
+              <div className="p-6 bg-background/10 rounded-lg border border-border relative overflow-hidden group hover:border-primary/30 transition-colors">
                 <h4 className="font-bold mb-2">Tier 2 — The Catalog ($250‑350)</h4>
-                <p className="text-muted-foreground">Product gallery (up to 20 items) • Categorized layouts • Product detail pop-ups • Direct-to-DM buttons • No hosting included</p>
-                <div className="mt-4">
-                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                <p className="text-muted-foreground mb-6">Product gallery (up to 20 items) • Categorized layouts • Product detail pop-ups • Direct-to-DM buttons • No hosting included</p>
+                <div className="flex items-center gap-4 mt-auto">
+                  <div onClick={() => handleApply('Business Tier 2 — The Catalog')}>
+                    <GlowButton>Apply</GlowButton>
+                  </div>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
                 </div>
               </div>
 
-              <div className="p-6 bg-background/10 rounded-lg border border-border">
+              <div className="p-6 bg-background/10 rounded-lg border border-border relative overflow-hidden group hover:border-primary/30 transition-colors">
                 <h4 className="font-bold mb-2">Tier 3 — The Firm ($380‑480)</h4>
-                <p className="text-muted-foreground">Service menu / price list • Team bios section • Client testimonials • Booking link integration • Hosting included • Mobile & desktop optimization</p>
-                <div className="mt-4">
-                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                <p className="text-muted-foreground mb-6">Service menu / price list • Team bios section • Client testimonials • Booking link integration • Hosting included • Mobile & desktop optimization</p>
+                <div className="flex items-center gap-4 mt-auto">
+                  <div onClick={() => handleApply('Business Tier 3 — The Firm')}>
+                    <GlowButton>Apply</GlowButton>
+                  </div>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
                 </div>
               </div>
 
-              <div className="p-6 bg-background/10 rounded-lg border border-border">
+              <div className="p-6 bg-background/10 rounded-lg border border-border relative overflow-hidden group hover:border-primary/30 transition-colors">
                 <h4 className="font-bold mb-2">Tier 4 — Enterprise Lite ($800+)</h4>
-                <p className="text-muted-foreground">Multi-page architecture • High-end motion graphics • Case studies section • Competitor analysis audit • Hosting included • Mobile & desktop optimization</p>
-                <div className="mt-4">
-                  <Link to="/audit-portfolio"><Button variant="outline" size="sm" className="w-full sm:w-auto">See Examples</Button></Link>
+                <p className="text-muted-foreground mb-6">Multi-page architecture • High-end motion graphics • Case studies section • Competitor analysis audit • Hosting included • Mobile & desktop optimization</p>
+                <div className="flex items-center gap-4 mt-auto">
+                  <div onClick={() => handleApply('Business Tier 4 — Enterprise Lite')}>
+                    <GlowButton>Apply</GlowButton>
+                  </div>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
                 </div>
               </div>
             </div>
