@@ -58,9 +58,9 @@ const Index = () => {
 		<div className="min-h-screen">
 			{/* Hero Section */}
 			<section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-			  {/* Insert shader only for this hero area (absolute and behind content) */}
-			  {/* Shader sits at z-0 so we can layer a dimming overlay behind or above it if needed */}
-			  <ShaderBackground className="absolute inset-0 h-full w-full z-0 pointer-events-none" />
+				{/* Insert shader only for this hero area (absolute and behind content) */}
+				{/* Shader sits at z-0 so we can layer a dimming overlay behind or above it if needed */}
+				<ShaderBackground className="absolute inset-0 h-full w-full z-0 pointer-events-none" />
 
 				{/* Background Gradient layers moved behind the shader (negative z) */}
 				<div className="absolute inset-0 -z-10 bg-gradient-to-br from-background via-background to-background" />
@@ -85,7 +85,7 @@ const Index = () => {
 							<span className="text-primary">Technical Signal</span>
 						</h1>
 						<p className="text-subtitle max-w-2xl mx-auto mb-12">
-							AlphaFrame converts technical complexity into Visual Authority. 
+							AlphaFrame converts technical complexity into Visual Authority.
 							<br className="hidden sm:block" /> We ensure Deep-Tech Founders command the capital and attention they deserve.
 						</p>
 
@@ -96,13 +96,13 @@ const Index = () => {
 							className="flex flex-col sm:flex-row gap-4 justify-center items-center"
 						>
 							<div className="relative inline-block">
-							  <GlowingEffect disabled={false} glow className="pointer-events-none rounded-md" />
-							  <Link to="/protocol" className="relative z-10 inline-block">
-							    <GradientButton className="group">
-							      View The Protocol
-							      <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-							    </GradientButton>
-							  </Link>
+								<GlowingEffect disabled={false} glow className="pointer-events-none rounded-md" />
+								<Link to="/protocol" className="relative z-10 inline-block">
+									<GradientButton className="group">
+										View The Protocol
+										<ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+									</GradientButton>
+								</Link>
 							</div>
 							<Link to="/audit-portfolio">
 								<Button
@@ -245,26 +245,32 @@ const Index = () => {
 							</p>
 
 							<div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-								<Button
-									size="lg"
-									className="bg-primary text-primary-foreground hover:bg-primary/90 animate-glow-pulse"
-								>
-									Apply for Protocol
-								</Button>
-								<Button
-									variant="outline"
-									size="lg"
-									className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-								>
-									See Case Studies
-								</Button>
-								<Button
-									variant="ghost"
-									size="lg"
-									className="text-muted-foreground hover:text-foreground"
-								>
-									Marketer Inquiry
-								</Button>
+								<Link to="/contact">
+									<Button
+										size="lg"
+										className="bg-primary text-primary-foreground hover:bg-primary/90 animate-glow-pulse"
+									>
+										Apply for Protocol
+									</Button>
+								</Link>
+								<Link to="/audit-portfolio">
+									<Button
+										variant="outline"
+										size="lg"
+										className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+									>
+										See Case Studies
+									</Button>
+								</Link>
+								<Link to="/contact">
+									<Button
+										variant="ghost"
+										size="lg"
+										className="text-muted-foreground hover:text-foreground"
+									>
+										Marketer Inquiry
+									</Button>
+								</Link>
 							</div>
 						</div>
 					</AnimatedSection>
