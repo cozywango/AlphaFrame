@@ -2,12 +2,22 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 import { Button } from '@/components/ui/button';
 import { GlowButton } from '@/components/ui/glow-button';
 import ProductInquiryModal from '@/components/ProductInquiryModal';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
 
 const ForCreators = () => {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleAuthCheck = (e: React.MouseEvent) => {
+    if (!user) {
+      e.preventDefault();
+      navigate('/auth');
+    }
+  };
 
   const handleApply = (productName: string) => {
     setSelectedProduct(productName);
@@ -66,7 +76,7 @@ const ForCreators = () => {
                   <div onClick={() => handleApply('Creator Tier 1 — Bio-Link')}>
                     <GlowButton>Interested</GlowButton>
                   </div>
-                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" onClick={handleAuthCheck}>See Examples</Link>
                 </div>
               </div>
 
@@ -77,7 +87,7 @@ const ForCreators = () => {
                   <div onClick={() => handleApply('Creator Tier 2 — Portfolio')}>
                     <GlowButton>Interested</GlowButton>
                   </div>
-                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" onClick={handleAuthCheck}>See Examples</Link>
                 </div>
               </div>
 
@@ -88,7 +98,7 @@ const ForCreators = () => {
                   <div onClick={() => handleApply('Creator Tier 3 — Content Hub')}>
                     <GlowButton>Interested</GlowButton>
                   </div>
-                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" onClick={handleAuthCheck}>See Examples</Link>
                 </div>
               </div>
 
@@ -99,7 +109,7 @@ const ForCreators = () => {
                   <div onClick={() => handleApply('Creator Tier 4 — Icon')}>
                     <GlowButton>Interested</GlowButton>
                   </div>
-                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" onClick={handleAuthCheck}>See Examples</Link>
                 </div>
               </div>
             </div>
@@ -114,7 +124,7 @@ const ForCreators = () => {
                   <div onClick={() => handleApply('Business Tier 1 — The Card')}>
                     <GlowButton>Interested</GlowButton>
                   </div>
-                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" onClick={handleAuthCheck}>See Examples</Link>
                 </div>
               </div>
 
@@ -125,7 +135,7 @@ const ForCreators = () => {
                   <div onClick={() => handleApply('Business Tier 2 — The Catalog')}>
                     <GlowButton>Interested</GlowButton>
                   </div>
-                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" onClick={handleAuthCheck}>See Examples</Link>
                 </div>
               </div>
 
@@ -136,7 +146,7 @@ const ForCreators = () => {
                   <div onClick={() => handleApply('Business Tier 3 — The Firm')}>
                     <GlowButton>Interested</GlowButton>
                   </div>
-                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors">See Examples</Link>
+                  <Link to="/audit-portfolio" className="text-sm text-muted-foreground hover:text-primary transition-colors" onClick={handleAuthCheck}>See Examples</Link>
                 </div>
               </div>
 
@@ -169,8 +179,8 @@ const ForCreators = () => {
             </div>
 
             <div className="text-center flex justify-center gap-4">
-              <Link to="/contact"><Button className="bg-primary text-primary-foreground hover:bg-primary/90">START PROJECT</Button></Link>
-              <Link to="/audit-portfolio"><Button variant="outline">Audit Portfolio</Button></Link>
+              <Link to="/contact" onClick={handleAuthCheck}><Button className="bg-primary text-primary-foreground hover:bg-primary/90">START PROJECT</Button></Link>
+              <Link to="/audit-portfolio" onClick={handleAuthCheck}><Button variant="outline">Audit Portfolio</Button></Link>
             </div>
 
           </div>

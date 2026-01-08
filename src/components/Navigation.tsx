@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X, User } from 'lucide-react';
 import { GradientButton } from '@/components/ui/gradient-button';
@@ -8,7 +8,18 @@ import { GlowingEffect } from '@/components/ui/glowing-effect';
 
 export const Navigation = () => {
 	const { user } = useAuth();
+	const navigate = useNavigate();
 	const [isOpen, setIsOpen] = useState(false);
+
+	const handleAuthCheck = (e: React.MouseEvent) => {
+		if (!user) {
+			e.preventDefault();
+			setIsOpen(false);
+			navigate('/auth');
+		} else {
+			setIsOpen(false);
+		}
+	};
 
 	const navItems = [
 		{ href: '/', label: 'Overview' },
@@ -62,12 +73,13 @@ export const Navigation = () => {
 									to={item.href}
 									style={{ transform: 'none' }}
 									className="text-muted-foreground transition-colors duration-300 font-medium relative z-10 px-1 hover:!text-muted-foreground hover:bg-transparent focus:bg-transparent hover:!scale-100 focus:!scale-100 active:!scale-100 !transform-none"
+									onClick={handleAuthCheck}
 								>
 									{item.label}
 								</Link>
 							</div>
 						))}
-						<Link to="/audit-portfolio">
+						<Link to="/audit-portfolio" onClick={handleAuthCheck}>
 							<GradientButton size="sm" className="w-fit">Audit Portfolio</GradientButton>
 						</Link>
 						{!user ? (
@@ -119,13 +131,13 @@ export const Navigation = () => {
 										to={item.href}
 										style={{ transform: 'none' }}
 										className="text-muted-foreground transition-colors duration-300 font-medium relative z-10 hover:!text-muted-foreground hover:bg-transparent focus:bg-transparent hover:!scale-100 focus:!scale-100 active:!scale-100 !transform-none"
-										onClick={() => setIsOpen(false)}
+										onClick={handleAuthCheck}
 									>
 										{item.label}
 									</Link>
 								</div>
 							))}
-							<Link to="/audit-portfolio">
+							<Link to="/audit-portfolio" onClick={handleAuthCheck}>
 								<GradientButton size="sm" className="w-fit">Audit Portfolio</GradientButton>
 							</Link>
 							{!user ? (
