@@ -41,7 +41,7 @@ const ProductInquiryModal = ({ productName, isOpen, onOpenChange }: ProductInqui
             const payload = {
                 ...formData,
                 productName,
-                type: 'product_inquiry'
+                inquiryType: 'product_inquiry'
             };
 
             const res = await fetch('/api/contact', {
