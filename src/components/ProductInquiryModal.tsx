@@ -51,7 +51,8 @@ const ProductInquiryModal = ({ productName, isOpen, onOpenChange }: ProductInqui
             });
 
             if (!res.ok) {
-                throw new Error('Failed to send inquiry');
+                const errorData = await res.json().catch(() => ({}));
+                throw new Error(errorData.error || 'Failed to send inquiry');
             }
 
             setSuccessMessage("Thanks! We've received your inquiry and will be in touch shortly.");
@@ -63,9 +64,9 @@ const ProductInquiryModal = ({ productName, isOpen, onOpenChange }: ProductInqui
                 setSuccessMessage(null);
             }, 3000);
 
-        } catch (err) {
+        } catch (err: any) {
             console.error(err);
-            setErrorMessage("Something went wrong. Please try again or email us directly.");
+            setErrorMessage(err.message || "Something went wrong. Please try again or email us directly.");
         } finally {
             setSubmitting(false);
         }
