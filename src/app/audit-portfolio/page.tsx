@@ -64,6 +64,12 @@ const portfolioData = [
 				title: 'Tier 2 Business Website',
 				link: 'https://azuretier2.vercel.app/',
 			},
+			{
+				id: 'w7',
+				image: '/businesstier3.png',
+				title: 'Tier 3 Business Website',
+				link: 'https://stratumtier3.vercel.app/',
+			},
 		],
 	},
 ];
