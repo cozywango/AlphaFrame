@@ -1,4 +1,6 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Helper to handle CORS (vital for Vite + Vercel interaction)
 const allowCors = (fn) => async (req, res) => {
@@ -26,9 +28,9 @@ async function handler(req, res) {
   }
 
   // 3. Environment Check
-  const { EMAIL_USER, EMAIL_PASS } = process.env;
-  if (!EMAIL_USER || !EMAIL_PASS) {
-    console.error('Missing Environment Variables: EMAIL_USER or EMAIL_PASS');
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error('Missing Environment Variable: RESEND_API_KEY');
     return res.status(500).json({ error: 'Server misconfiguration.' });
   }
 
@@ -52,41 +54,39 @@ async function handler(req, res) {
     // In modal we send 'requirements' via formData. Let's map it if incoming message is empty.
     const requirements = body.requirements || message;
 
-    // 5. Transporter Setup
-    const transporter = nodemailer.createTransport({
-      service: 'gmail', // Or your SMTP host
-      auth: {
-        user: EMAIL_USER,
-        pass: EMAIL_PASS,
-      },
-    });
-
-    // 6. Send Mail
+    // 5. Determine subject prefix based on inquiry type
     let subjectPrefix = '[FOUNDER INQUIRY]';
     if (inquiryType === 'marketer') subjectPrefix = '[HUNTER APPLICATION]';
     if (inquiryType === 'product_inquiry') subjectPrefix = `[PRODUCT INQUIRY] ${productName || 'General'}`;
 
-    const mailOptions = {
-      from: `"${name}" <${EMAIL_USER}>`, // Sender address
-      to: EMAIL_USER, // List of receivers (sending to yourself)
-      replyTo: email,
+    // 6. Send email using Resend
+    const data = await resend.emails.send({
+      from: 'forwarder@alphasight.online', // Your verified sender address
+      to: 'joelwango@outlook.com', // Where to receive contact form submissions
+      replyTo: email, // Reply to the person who submitted the form
       subject: `${subjectPrefix} from ${name}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        Phone: ${phone || 'Not provided'}
-        Socials: ${socials || 'Not provided'}
-        Website: ${website || 'Not provided'}
-        Type: ${inquiryType === 'marketer' ? 'Hunter Application' : inquiryType === 'product_inquiry' ? 'Product Inquiry' : 'Founder Inquiry'}
-        Product: ${productName || 'N/A'}
-        
-        Message / Requirements:
-        ${requirements || message}
+      html: `
+        <div style="font-family: sans-serif; padding: 20px; background: #f4f4f4;">
+          <div style="background: white; padding: 20px; border-radius: 8px;">
+            <h2 style="margin-top:0;">${subjectPrefix}</h2>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+            <p><strong>Socials:</strong> ${socials || 'Not provided'}</p>
+            <p><strong>Website:</strong> ${website || 'Not provided'}</p>
+            <p><strong>Type:</strong> ${inquiryType === 'marketer' ? 'Hunter Application' : inquiryType === 'product_inquiry' ? 'Product Inquiry' : 'Founder Inquiry'}</p>
+            <p><strong>Product:</strong> ${productName || 'N/A'}</p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
+            <h3>Message / Requirements:</h3>
+            <div style="color: #333; white-space: pre-wrap;">
+              ${requirements || message || 'No message provided'}
+            </div>
+          </div>
+        </div>
       `,
-    };
+    });
 
-    await transporter.sendMail(mailOptions);
-    console.log('Email sent successfully');
+    console.log('Email sent successfully via Resend:', data);
 
     return res.status(200).json({ success: true, message: 'Email sent!' });
 
